@@ -1,0 +1,62 @@
+{
+  "database": {
+    "host": "10.0.4.4:27017,10.0.4.5:27017",
+    "default_db_name": "redeem_rewards20",
+    "defaults": {
+      "createdBy": "SYSTEM",
+      "updatedBy": "SYSTEM"
+    },
+    "env": "qa",
+    "default_org_name": "redeem",
+    "replica_set": "qa_futurx",
+    "authentication": true,
+    "fetch_secrets": true,
+    "user": "mongodb-user-qa",
+    "pass": "mongodb-password-qa",
+    "auth_source": "admin",
+    "mongo_options": {
+      "useNewUrlParser": true
+    }
+  },
+  "logs": {
+    "level": "info",
+    "stream": "gelf",
+    "gelf_hostname": "10.0.2.10",
+    "gelf_port": 12201,
+    "obfuscate": {
+      "enabled": true
+    }
+  },
+  "token_mgmt_service": {
+    "port": 80,
+    "enabled": true
+  },
+  "role_mgmt_service": {
+    "port": 80,
+    "enabled": true
+  },
+  "secrets_mgmt_service": {
+    "port": 80
+  },
+  "crypto_service": {
+    "port": 80
+  },
+  "mask_data": {
+    "port": 80
+  },
+  "communication_template_mgmt_service": {
+    "port": 80
+  },
+  "resume_viewer_service": {
+    "port": 80
+  },
+  "hiring_workFlow": { 
+    "port": 8112
+  },
+  "config_helper_module_config": {
+    "port": 80 
+  },
+  "file_storage_service": {
+    "port": 80 
+  }
+}
