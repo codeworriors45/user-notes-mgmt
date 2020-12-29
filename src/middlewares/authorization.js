@@ -53,10 +53,10 @@ module.exports = function (app) {
         const reqPath = req.path
         const reqMethod = req.method
         const tokenValidationResponse = await verifyRole(reqPath, userCode, token, tenant, reqMethod)
-        if (tokenValidationResponse.response.status_code !== `${SERVICE_CONS}200`) {
+        if ((tokenValidationResponse.status_code !== undefined && tokenValidationResponse.status_code !== `${SERVICE_CONS}200`) || (tokenValidationResponse.response && tokenValidationResponse.response.status_code !== `${SERVICE_CONS}200`)) {
           return res.status(getStatusCode(tokenValidationResponse.response.status_code)).json(tokenValidationResponse)
         } else {
-          req.role_id = tokenValidationResponse.role_id
+          req.role_id = tokenValidationResponse.role_id ? tokenValidationResponse.role_id : 'ANONYMOUS_USER'
           next()
         }
       } catch (error) {
@@ -69,6 +69,7 @@ module.exports = function (app) {
 async function verifyRole (reqPath, userCode, token, tenant, reqMethod) {
   try {
     const rbacRequiredToVerify = await checkRbac(reqPath, reqMethod)
+    console.log(rbacRequiredToVerify)
     if (rbacRequiredToVerify === false) {
       logger.debug(`userCode = ${userCode}, token = ${token}, reqPath = ${reqPath}, reqMethod = ${reqMethod}, msg = ${msgCons.MSG_NO_NEET_ROLE_VERIFICATION}: api exclusions`)
       return roleResponseGenerator(httpStatusCode.OK, msgCons.MSG_NO_NEET_ROLE_VERIFICATION, msgCons.MSG_NO_NEET_ROLE_VERIFICATION, false)

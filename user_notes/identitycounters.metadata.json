@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"user_notes.identitycounters"},{"v":2,"unique":true,"key":{"field":1,"groupingField":1,"model":1},"name":"field_1_groupingField_1_model_1","ns":"user_notes.identitycounters","background":true}],"uuid":"f3607e6bda7042daac611ab2ce444704"}

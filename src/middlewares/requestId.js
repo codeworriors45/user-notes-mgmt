@@ -10,6 +10,7 @@ const httpContext = require('express-http-context')
  * @return {function} Express middleware.
  */
 module.exports = function (options) {
+  console.log('------SSS')
   options = options || {}
   options.uuidVersion = options.uuidVersion || 'v4'
   options.setHeader = options.setHeader === undefined || !!options.setHeader
