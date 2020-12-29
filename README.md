@@ -3,6 +3,7 @@
 user-notes mgmt Service
 
 We will use some attibute of data from which we can rander on demand change without deployment by directly injecting the attribute in aaplication.
+
 In memory Caching will be done from this service.
 
 We have role based access control for this service, so there is some pre-defined steps we should follow to achive our things working.
@@ -16,7 +17,9 @@ We have RBAC(Role based access control) for authorisation of our APIs.
 2. CURD APIs for notes are been covered with authentication and authorization layer.
 
 every API(auth bounded) should have following attributes to be there to full fill the RBAC.
+
 1.RBAC url mapping :- {"url": "/api/user-notes/v1/add/note", "action": "add new note v1"} in collection rbac_url_mapping
+
 2.RBAC rule details :- {"a": "APP_USER", "can": "add new note v1"} in collection rbac_rule_details
 
 above combination of data present in both the collections makes user to do that particular action mapped
